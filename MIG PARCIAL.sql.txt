@@ -1,0 +1,61 @@
+USE [GD2C2023]
+GO
+
+/****** Object:  Schema [CINCO_PALABRAS_CRACK]    Script Date: 22/11/2023 12:51:42 ******/
+CREATE SCHEMA [CINCO_PALABRAS_CRACK]
+GO
+
+
+insert into CINCO_PALABRAS_CRACK.Tipo_Inmueble (nombre)
+select distinc (INMUEBLE_TIPO_INMUEBLE from gd_esquema.Maestra
+where INMUEBLE_TIPO_INMUEBLE IS NOT NULL
+insert into CINCO_PALABRAS_CRACK.Tipo_Inmueble (nombre) values ('Casa'), ('PH') -- hay que ver si faltan mas
+
+insert into CINCO_PALABRAS_CRACK.Ambiente (cantidad) 
+select distinct INMUEBLE_CANT_AMBIENTES from gd_esquema.Maestra
+where INMUEBLE_CANT_AMBIENTES IS NOT NULL
+
+insert into CINCO_PALABRAS_CRACK.Estado_Inmueble(descripcion)
+select distinct INMUEBLE_ESTADO from gd_esquema.Maestra
+where INMUEBLE_ESTADO IS NOT NULL
+
+insert into CINCO_PALABRAS_CRACK.Tipo_Operacion(nombre)
+select distinct ANUNCIO_TIPO_OPERACION from gd_esquema.Maestra
+where ANUNCIO_TIPO_OPERACION IS NOT NULL
+
+insert into CINCO_PALABRAS_CRACK.Caracteristica (descripcion)
+values ('Cochera'), ('Piscina'), ('Calefaccion central'), ('Aire acondicionado'), ('Wifi'), ('Amoblamiento')
+
+insert into CINCO_PALABRAS_CRACK.Medio_pago (descripcion)
+select distinct PAGO_ALQUILER_MEDIO_PAGO from gd_esquema.Maestra
+where PAGO_ALQUILER_MEDIO_PAGO IS NOT NULL
+-- insert into y otros values?
+
+insert into CINCO_PALABRAS_CRACK.Estado_Alquiler (descripcion)
+select distinct ALQUILER_ESTADO from gd_esquema.Maestra
+where ALQUILER_ESTADO IS NOT NULL
+
+insert into CINCO_PALABRAS_CRACK.Tipo_Periodo (descripcion)
+select distinct ANUNCIO_TIPO_PERIODO from gd_esquema.Maestra
+where ANUNCIO_TIPO_PERIODO IS NOT NULL
+
+insert into CINCO_PALABRAS_CRACK.Estado_Anuncio (descripcion)
+select distinct ANUNCIO_ESTADO from gd_esquema.Maestra
+where ANUNCIO_ESTADO IS NOT NULL
+insert into CINCO_PALABRAS_CRACK.Estado_Anuncio (descripcion) values ('Activo')
+
+insert into CINCO_PALABRAS_CRACK.Agente_Inmobiliario (dni, nombre, apellido, fecha_registro, telefono, mail, fecha_nacimiento)
+select distinct(AGENTE_DNI), AGENTE_NOMBRE, AGENTE_APELLIDO, AGENTE_FECHA_REGISTRO, AGENTE_TELEFONO, AGENTE_MAIL, AGENTE_FECHA_NAC from gd_esquema.Maestra
+where agente_dni IS NOT NULL
+
+insert into CINCO_PALABRAS_CRACK.Inquilino(dni, nombre, apellido, fecha_registro, telefono, mail, fecha_nacimiento)
+select distinct(INQUILINO_DNI), INQUILINO_NOMBRE, INQUILINO_APELLIDO, INQUILINO_FECHA_REGISTRO, INQUILINO_TELEFONO, INQUILINO_MAIL, INQUILINO_FECHA_NAC from gd_esquema.Maestra m
+where INQUILINO_DNI IS NOT NULL
+
+insert into CINCO_PALABRAS_CRACK.Propietario(dni, nombre, apellido, fecha_registro, telefono, mail, fecha_nacimiento)
+select distinct(PROPIETARIO_DNI), PROPIETARIO_NOMBRE, PROPIETARIO_APELLIDO, PROPIETARIO_FECHA_REGISTRO, PROPIETARIO_TELEFONO, PROPIETARIO_MAIL, PROPIETARIO_FECHA_NAC from gd_esquema.Maestra m
+where PROPIETARIO_DNI IS NOT NULL
+
+insert into CINCO_PALABRAS_CRACK.Comprador(dni, nombre, apellido, fecha_registro, telefono, mail, fecha_nacimiento)
+select distinct(COMPRADOR_DNI), COMPRADOR_NOMBRE, COMPRADOR_APELLIDO, COMPRADOR_FECHA_REGISTRO, COMPRADOR_TELEFONO, COMPRADOR_MAIL, COMPRADOR_FECHA_NAC from gd_esquema.Maestra m
+where COMPRADOR_DNI IS NOT NULL
